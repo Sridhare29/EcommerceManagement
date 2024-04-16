@@ -1,0 +1,31 @@
+﻿using Ecommerce.Management.Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ecommerce.Mamagement.Application.Persistance
+{
+    public interface IGenericRepository<T> where T : class
+    {
+        Task<T> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task<T> CreateAsync(T entity);
+        Task<T> UpdateAsync(T entity);
+        Task<T> DeleteAsync(T entity);
+    }
+
+    public interface IProductRepository : IGenericRepository<Product>
+    {
+    }
+    public interface IUserRepository : IGenericRepository<User>
+    {
+    }
+
+    public interface IcartRepository : IGenericRepository<Cart>
+    {
+    }
+
+
+}
