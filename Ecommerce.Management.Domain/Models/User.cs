@@ -41,7 +41,7 @@ namespace Ecommerce.Management.Domain.Models
 
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Wishlist> Wishlists { get; set; }
-        public ICollection<Cart> Carts { get; set; }
+        public ICollection<Carts> Carts { get; set; }
         public ICollection<OrderDetails> OrderDetails { get; set; }
 
     }

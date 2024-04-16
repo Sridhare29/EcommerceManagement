@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Ecommerce.Management.Domain.Models.Category
 {
 
-    public class Category
+    public class Categorys
     {
         public int Id { get; set; }
 

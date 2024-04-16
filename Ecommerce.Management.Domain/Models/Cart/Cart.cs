@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Domain.Models.Cart
 {
-    public class Cart
+    public class Carts
     {
         [Key]
         public int Id { get; set; }
