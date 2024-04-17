@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Ecommerce.Management.Domain.Models;
 
-public partial class Category
+public class Category
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public string? Name { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreatedOn { get; set; }
 
-    public DateTime? DeletedAt { get; set; }
+    public DateTime? UpdatedOn { get; set; }
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

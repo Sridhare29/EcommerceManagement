@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries;
+using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetAllUser;
+using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetByUserId;
 using Ecommerce.Management.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Ecommerce.Mamagement.Application.MappingProfile
         public UserProfile()
         {
             CreateMap<UserDto, User>().ReverseMap();
+            CreateMap<User, UserDetailsDto>();
         }
     }
 }
