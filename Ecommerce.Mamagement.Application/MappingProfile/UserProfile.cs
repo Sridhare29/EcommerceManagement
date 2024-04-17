@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Ecommerce.Mamagement.Application.Features.User.Queries;
+using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries;
 using Ecommerce.Management.Domain.Models;
 using System;
 using System.Collections.Generic;
