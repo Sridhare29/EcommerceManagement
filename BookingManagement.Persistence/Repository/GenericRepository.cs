@@ -1,4 +1,7 @@
 ﻿using Ecommerce.Mamagement.Application.Contracts.Persistance;
+using Ecommerce.Management.Domain.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,31 +10,42 @@ using System.Threading.Tasks;
 
 namespace BookingManagement.Persistence.Repository
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public Task<T> CreateAsync(T entity)
+        protected readonly EcommerceApplicationContext _ecommerceApplicationContext;
+        public GenericRepository(EcommerceApplicationContext ecommerceApplicationContext)
         {
-            throw new NotImplementedException();
+            this._ecommerceApplicationContext = ecommerceApplicationContext;
+        }
+        public async Task CreateAsync(T entity)
+        {
+            await _ecommerceApplicationContext.AddAsync(entity);
+            await _ecommerceApplicationContext.SaveChangesAsync();
         }
 
-        public Task<T> DeleteAsync(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+             _ecommerceApplicationContext.Remove(entity);
+            await _ecommerceApplicationContext.SaveChangesAsync();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<IReadOnlyList<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _ecommerceApplicationContext.Set<T>().ToListAsync();
         }
 
-        public Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _ecommerceApplicationContext.Set<T>().FindAsync(id);
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+             _ecommerceApplicationContext.Update(entity);
+            _ecommerceApplicationContext.Entry(entity).State = EntityState.Modified;
+            await _ecommerceApplicationContext.SaveChangesAsync();
         }
+
+
     }
 }

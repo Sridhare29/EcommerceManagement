@@ -15,8 +15,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Ecommerce.Management.API\Ecommerce.Management.API.csproj" />
-  </ItemGroup>
-
 </Project>

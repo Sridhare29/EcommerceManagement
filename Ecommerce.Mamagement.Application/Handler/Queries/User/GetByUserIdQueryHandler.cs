@@ -4,7 +4,7 @@ using Ecommerce.Mamagement.Application.Contracts.Persistance;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using MediatR;
 
-namespace Ecommerce.Mamagement.Application.Handler.Queries.User
+namespace Ecommerce.Management.Application.Handler.Queries.User
 {
     public class GetByUserIdQueryHandler : IRequestHandler<GetByUserIdQuery, UserDetailsDto>
     {

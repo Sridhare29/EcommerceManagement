@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BookingManagement.Persistence.Repository;
+using Ecommerce.Mamagement.Application.Contracts.Persistance;
+using Ecommerce.Management.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +15,14 @@ namespace BookingManagement.Persistence
 {
     public static class PersistenceServiceRegistration 
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddDbContext<EcommerceApplicationContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
+            });
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             return services;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Contracts.Exceptions
+namespace Ecommerce.Management.Application.Contracts.Exceptions
 {
     public class BadRequestException : Exception
     {

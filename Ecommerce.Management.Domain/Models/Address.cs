@@ -5,9 +5,9 @@ namespace Ecommerce.Management.Domain.Models;
 
 public partial class Address
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
     public string? Title { get; set; }
 
@@ -25,9 +25,9 @@ public partial class Address
 
     public string? PhoneNumber { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreatedOn { get; set; }
 
-    public DateTime? DeletedAt { get; set; }
+    public DateTime? UpdatedOn { get; set; }
 
     public virtual User? User { get; set; }
 }

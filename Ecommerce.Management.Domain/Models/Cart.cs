@@ -5,13 +5,13 @@ namespace Ecommerce.Management.Domain.Models;
 
 public partial class Cart
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public int? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreatedOn { get; set; }
 
-    public DateTime? UpdatedAt { get; set; }
+    public DateTime? UpdatedOn { get; set; }
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 

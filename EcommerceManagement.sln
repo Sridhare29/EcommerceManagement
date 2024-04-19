@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Management.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Management.API", "Ecommerce.Management.API\Ecommerce.Management.API.csproj", "{665EBCE7-98A1-4C32-B9F4-B131405051FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Mamagement.Application", "Ecommerce.Mamagement.Application\Ecommerce.Mamagement.Application.csproj", "{33736EB4-3D3E-459F-88FD-67FB62773162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Management.Application", "Ecommerce.Mamagement.Application\Ecommerce.Management.Application.csproj", "{33736EB4-3D3E-459F-88FD-67FB62773162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingManagement.Persistence", "BookingManagement.Persistence\BookingManagement.Persistence.csproj", "{24D5EB00-D5FD-4C17-A387-B3A64337B46B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingManagement.Persistence", "BookingManagement.Persistence\BookingManagement.Persistence.csproj", "{24D5EB00-D5FD-4C17-A387-B3A64337B46B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

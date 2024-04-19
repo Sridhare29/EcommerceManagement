@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.MappingProfile
+namespace Ecommerce.Management.Application.Mapping
 {
     public class UserProfile : Profile
     {

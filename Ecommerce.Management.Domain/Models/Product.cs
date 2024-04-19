@@ -11,8 +11,6 @@ public class Product
 
     public string? Description { get; set; }
 
-    public string? Summary { get; set; }
-
     public int? CategoryId { get; set; }
     public virtual Category? Category { get; set; }
 

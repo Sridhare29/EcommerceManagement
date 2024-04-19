@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application
+namespace Ecommerce.Management.Application
 {
     public static class ApplicationServiceRegistration
     {
