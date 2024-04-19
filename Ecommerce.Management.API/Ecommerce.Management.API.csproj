@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,6 +22,10 @@
   <ItemGroup>
     <ProjectReference Include="..\BookingManagement.Persistence\BookingManagement.Persistence.csproj" />
     <ProjectReference Include="..\Ecommerce.Mamagement.Application\Ecommerce.Management.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
