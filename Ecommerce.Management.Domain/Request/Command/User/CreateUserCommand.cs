@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.UpdateUser
+namespace Ecommerce.Management.Domain.Request.Command.User
 {
-    public class UpdateUserCommand : IRequest<Unit>
+    public class CreateUserCommand : IRequest<Guid>
     {
         public string? FirstName { get; set; }
 

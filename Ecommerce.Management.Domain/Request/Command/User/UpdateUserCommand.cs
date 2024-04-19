@@ -1,16 +1,14 @@
-﻿using Ecommerce.Management.Domain.Models;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetAllUser
+namespace Ecommerce.Management.Domain.Request.Command.User
 {
-    public class UserDto
+    public class UpdateUserCommand : IRequest<Unit>
     {
-        public Guid Id { get; set; }
-
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -24,10 +22,5 @@ namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetA
         public DateOnly? BirthOfDate { get; set; }
 
         public string? MobileNumber { get; set; }
-
-        public DateTime? CreatedOn { get; set; }
-
-        public DateTime? UpdatedOn { get; set; }
-
     }
 }

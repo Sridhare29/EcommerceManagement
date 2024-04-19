@@ -1,14 +1,16 @@
-﻿using MediatR;
+﻿using Ecommerce.Management.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.CreateUser
+namespace Ecommerce.Management.Domain.Request.Queries.User
 {
-    public class CreateUserCommand : IRequest<Guid>
+    public class UserDetailsDto
     {
+        public Guid Id { get; set; }
+
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -22,5 +24,11 @@ namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.Cre
         public DateOnly? BirthOfDate { get; set; }
 
         public string? MobileNumber { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+
+        public DateTime? UpdatedOn { get; set; }
+
+
     }
 }

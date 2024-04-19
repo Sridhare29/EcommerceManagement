@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.DeleteUser
+namespace Ecommerce.Management.Domain.Request.Command.User
 {
     public class DeleteUserCommand : IRequest<Unit>
     {

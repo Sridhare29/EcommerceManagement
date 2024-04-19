@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.Mamagement.Application.Contracts.Persistance;
+using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.CreateUser
+namespace Ecommerce.Mamagement.Application.Handler.Command.User.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetByUserId
+namespace Ecommerce.Management.Domain.Request.Queries.User
 {
-    public class UserDetailsDto
+    public class UserDto
     {
         public Guid Id { get; set; }
 
@@ -28,7 +28,6 @@ namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetB
         public DateTime? CreatedOn { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
-
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Ecommerce.Mamagement.Application.Contracts.Exceptions;
 using Ecommerce.Mamagement.Application.Contracts.Persistance;
-using Ecommerce.Mamagement.Application.Features.User;
+using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.DeleteUser
+namespace Ecommerce.Mamagement.Application.Handler.Command.User.Commands.DeleteUser
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
     {
         private readonly IUserRepository _userRepository;
-        public DeleteUserCommandHandler( IUserRepository userRepository)
+        public DeleteUserCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -26,7 +26,7 @@ namespace Ecommerce.Mamagement.Application.Features.User.GetAllUser.Commands.Del
             {
                 throw new NotFoundException(nameof(User), request.Id);
             }
-            
+
             //remove form db
             await _userRepository.DeleteAsync(userToDelete);
             //return record id

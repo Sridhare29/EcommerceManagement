@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetAllUser;
-using Ecommerce.Mamagement.Application.Features.User.GetAllUser.Queries.GetByUserId;
 using Ecommerce.Management.Domain.Models;
+using Ecommerce.Management.Domain.Request.Queries.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
