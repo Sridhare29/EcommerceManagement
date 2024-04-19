@@ -8,27 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Handler.Command.User.Commands.CreateUser
+namespace Ecommerce.Mamagement.Application.Handler.Command.User
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
+    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        public CreateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
+        public UpdateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             //Validate incomming data
 
             //convert to domain entity
-            var usertocreate = _mapper.Map<Management.Domain.Models.User>(request);
+            var usertoupdate = _mapper.Map<Management.Domain.Models.User>(request);
             //add to db
-            await _userRepository.CreateAsync(usertocreate);
-            //return record guid
-            return usertocreate.Id;
+            await _userRepository.UpdateAsync(usertoupdate);
+            //return unit value
+            return Unit.Value;
         }
     }
 }

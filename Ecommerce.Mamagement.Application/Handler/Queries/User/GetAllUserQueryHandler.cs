@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Mamagement.Application.Handler.Queries.User.Queries.GetAllUser
+namespace Ecommerce.Mamagement.Application.Handler.Queries.User
 {
     public class GetAllUserQueryHandler : IRequestHandler<GetAllUserQuery, List<UserDto>>
     {
