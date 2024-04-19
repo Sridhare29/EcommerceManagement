@@ -17,4 +17,8 @@
     <Folder Include="Handler\Queries\Products\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommerce.Management.Domain\Ecommerce.Management.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
