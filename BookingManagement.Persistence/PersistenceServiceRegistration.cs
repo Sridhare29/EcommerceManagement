@@ -1,5 +1,5 @@
 ﻿using BookingManagement.Persistence.Repository;
-using Ecommerce.Mamagement.Application.Contracts.Persistance;
+using Ecommerce.Management.Application.Contracts.Persistance;
 using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

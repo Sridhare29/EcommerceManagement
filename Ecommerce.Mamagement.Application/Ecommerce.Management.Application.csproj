@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ecommerce.Management.Domain\Ecommerce.Management.Domain.csproj" />
+    <Folder Include="Handler\Command\Products\" />
+    <Folder Include="Handler\Queries\Products\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handler\Command\Products\" />
-    <Folder Include="Handler\Queries\Products\" />
+    <ProjectReference Include="..\Ecommerce.Management.Domain\Ecommerce.Management.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Ecommerce.Mamagement.Application.Contracts.Persistance;
+using Ecommerce.Management.Application.Contracts.Persistance;
 using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;

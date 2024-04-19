@@ -1,5 +1,5 @@
 using BookingManagement.Persistence;
-using Ecommerce.Mamagement.Application;
+using Ecommerce.Management.Application;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

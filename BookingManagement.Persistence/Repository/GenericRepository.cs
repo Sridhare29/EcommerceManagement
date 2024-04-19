@@ -1,6 +1,5 @@
-﻿using Ecommerce.Mamagement.Application.Contracts.Persistance;
+﻿using Ecommerce.Management.Application.Contracts.Persistance;
 using Ecommerce.Management.Domain.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
