@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Management.Domain.Request.Queries.User
+namespace Ecommerce.Management.Domain.Response.User
 {
-    public class UserDto
+    public class GetUserResponseModel
     {
         public Guid Id { get; set; }
 
