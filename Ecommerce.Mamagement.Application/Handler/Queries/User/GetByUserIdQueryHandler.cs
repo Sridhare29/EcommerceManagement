@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Application.Contracts.Exceptions;
 using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response.User;
 using MediatR;
@@ -10,8 +11,8 @@ namespace Ecommerce.Management.Application.Handler.Queries.User
     public class GetByUserIdQueryHandler : IRequestHandler<GetUserDetailRequestModel, GetUserDetailResponseModel>
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        public GetByUserIdQueryHandler(IMapper mapper, IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public GetByUserIdQueryHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;

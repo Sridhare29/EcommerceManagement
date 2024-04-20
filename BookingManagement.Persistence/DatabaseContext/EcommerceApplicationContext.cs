@@ -31,10 +31,6 @@ public partial class EcommerceApplicationContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<ProductAttribute> ProductAttributes { get; set; }
-
-    public virtual DbSet<ProductAttributeType> ProductAttributeTypes { get; set; }
-
     public virtual DbSet<ProductSku> ProductSkus { get; set; }
 
 
@@ -50,9 +46,17 @@ public partial class EcommerceApplicationContext : DbContext
     }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=KANINI-LTP-814\\SQLEXPRESS;Database=EcommerceDb;User Id=sa;Password=@Codesri29;Encrypt=False;TrustServerCertificate=true");
+        }
+    }
 
-   // public override Task(Guid) SaveChangesArgs(CancellationToken cancellationToken = default)
-  //      {
-//return base.SaveChangesAsync(cancellationToken);
-  //  }
+
+    // public override Task(Guid) SaveChangesArgs(CancellationToken cancellationToken = default)
+    //      {
+    //return base.SaveChangesAsync(cancellationToken);
+    //  }
 }

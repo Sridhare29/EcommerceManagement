@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;
@@ -13,8 +14,8 @@ namespace Ecommerce.Management.Application.Handler.Command.User
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        public CreateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public CreateUserCommandHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;

@@ -18,10 +18,9 @@ namespace Ecommerce.Management.Application.Interface
 
     public interface IProductRepository : IGenericRepository<Product>
     {
+
     }
-    public interface IUserRepository : IGenericRepository<User>
-    {
-    }
+
 
     public interface IcartRepository : IGenericRepository<Cart>
     {

@@ -1,4 +1,5 @@
-﻿using Ecommerce.Management.Application.Interfaces.Queries;
+﻿using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,36 +10,17 @@ using System.Threading.Tasks;
 
 namespace BookingManagement.Persistence.Repository
 {
-    public class UserRepository : IUserQueryRepository
+    public class UserRepository : GenericRepository<User>, IUserQueryRepository
     {
         protected readonly EcommerceApplicationContext _ecommerceApplicationContext;
-        public UserRepository(EcommerceApplicationContext ecommerceApplicationContext)
+        public UserRepository(EcommerceApplicationContext ecommerceApplicationContext) : base(ecommerceApplicationContext)
         {
             this._ecommerceApplicationContext = ecommerceApplicationContext;
         }
-        public async Task<User> CreateAsync(User user)
-        {
-            await _ecommerceApplicationContext.AddAsync(user);
-            await _ecommerceApplicationContext.SaveChangesAsync();
-            return user;
-        }
 
-        public async Task<User?> GetByIdAsync(Guid id)
+        public async Task<bool> IsUserUnique(string username)
         {
-            return await _ecommerceApplicationContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<User> UpdateAsync(Guid id, User user)
-        {
-            var userToUpdate = await _ecommerceApplicationContext.Users.FirstOrDefaultAsync(x => x.Id == id);   
-            if (userToUpdate != null)
-            {
-                return null;
-            }
-            _ecommerceApplicationContext.Update(user);
-            _ecommerceApplicationContext.Entry(user).State = EntityState.Modified;
-            await _ecommerceApplicationContext.SaveChangesAsync();
-            return user;
+           return await _ecommerceApplicationContext.Users.AnyAsync(q => q.Username == username) == false;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response.User;
 using MediatR;
@@ -14,8 +15,8 @@ namespace Ecommerce.Management.Application.Handler.Queries.User
     public class GetAllUserQueryHandler : IRequestHandler<GetUserRequestModel, List<GetUserResponseModel>>
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        public GetAllUserQueryHandler(IMapper mapper, IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public GetAllUserQueryHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Ecommerce.Management.Application.Handler.Command.User;
 using Ecommerce.Management.Domain.Models;
+using Ecommerce.Management.Domain.Request.Command.User;
 using Ecommerce.Management.Domain.Response.User;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,9 @@ namespace Ecommerce.Management.Application.Mapping
         {
             CreateMap<GetUserResponseModel, User>().ReverseMap();
             CreateMap<User, GetUserDetailResponseModel>();
+            CreateMap<CreateUserCommand, User>().ReverseMap();
+            CreateMap<UpdateUserCommand, User>().ReverseMap();
+
         }
     }
 }

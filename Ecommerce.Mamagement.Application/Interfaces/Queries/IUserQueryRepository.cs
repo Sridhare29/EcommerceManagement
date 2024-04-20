@@ -1,4 +1,5 @@
-﻿using Ecommerce.Management.Domain.Models;
+﻿using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,8 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Interfaces.Queries
 {
-    public interface IUserQueryRepository
+    public interface IUserQueryRepository : IGenericRepository<User>
     {
-        Task<User?> GetByIdAsync(Guid id);
-
-        Task<User> CreateAsync(User user);
-
-        Task<User> UpdateAsync(Guid id, User user);
-
+        Task<bool> IsUserUnique(string username);
     }
 }
