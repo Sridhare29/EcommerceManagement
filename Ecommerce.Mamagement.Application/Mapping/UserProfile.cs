@@ -17,8 +17,8 @@ namespace Ecommerce.Management.Application.Mapping
         {
             CreateMap<GetUserResponseModel, User>().ReverseMap();
             CreateMap<User, GetUserDetailResponseModel>();
-            CreateMap<CreateUserCommand, User>().ReverseMap();
-            CreateMap<UpdateUserCommand, User>().ReverseMap();
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
 
         }
     }
