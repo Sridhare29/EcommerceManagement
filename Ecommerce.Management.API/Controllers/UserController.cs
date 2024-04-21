@@ -1,4 +1,5 @@
-﻿using Ecommerce.Management.Domain.Request.Command.User;
+﻿using Ecommerce.Management.Domain.Models;
+using Ecommerce.Management.Domain.Request.Command.User;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response.User;
 using MediatR;
@@ -8,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ecommerce.Management.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class UserController : ControllerBase
     {
         public readonly IMediator _mediator;
@@ -19,33 +19,29 @@ namespace Ecommerce.Management.API.Controllers
         [HttpGet("users")]
         public async Task<ActionResult<List<GetUserResponseModel>>> GetUsers()
         {
-            var users = await _mediator.Send(new GetUserRequestModel());
-            return Ok(users);
+            var response = await _mediator.Send(new GetUserRequestModel());
+            return Ok(response);
         }
 
         [HttpGet("users/{id}")]
         public async Task<ActionResult<GetUserDetailResponseModel>> GetUserById(Guid id)
         {
-            var user = await _mediator.Send(new GetUserDetailRequestModel(id));
-            return Ok(user);
+            var response = await _mediator.Send(new GetUserDetailRequestModel(id));
+            return Ok(response);
         }
         [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("UserPost")]      
         public async Task<ActionResult> PostUser(CreateUserCommand createUserCommand)
         {
-            var users =  await _mediator.Send(createUserCommand);
-            return CreatedAtAction(nameof(GetUserById), new { id = Response });
+            var response =  await _mediator.Send(createUserCommand);
+            return CreatedAtAction(nameof(GetUserById), new { id = response }, createUserCommand);
         }
+
         [HttpPut("{id}")]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult> PutUser(UpdateUserCommand updateUserCommand)
         {
-            var users = await _mediator.Send(updateUserCommand);
-            return NoContent();
+            var response = await _mediator.Send(updateUserCommand);
+            return Ok(response);
         }
     }
 }

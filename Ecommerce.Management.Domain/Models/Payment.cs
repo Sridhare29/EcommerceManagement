@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.Management.Domain.Models;
 
 public partial class Payment
 {
+    [Key]
     public int Id { get; set; }
 
     public int? OrderId { get; set; }

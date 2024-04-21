@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookingManagement.Persistence.Migrations
 {
     [DbContext(typeof(EcommerceApplicationContext))]
-    [Migration("20240420081354_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240421055037_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -41,7 +41,6 @@ namespace BookingManagement.Persistence.Repository
         public async Task UpdateAsync(T entity)
         {
             _ecommerceApplicationContext.Update(entity);
-            _ecommerceApplicationContext.Entry(entity).State = EntityState.Modified;
             await _ecommerceApplicationContext.SaveChangesAsync();
         }
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Ecommerce.Management.Application.Contracts.Exceptions;
 using Ecommerce.Management.Application.Interface;
 using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Command.User;

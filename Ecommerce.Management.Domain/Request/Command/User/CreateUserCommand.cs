@@ -24,8 +24,5 @@ namespace Ecommerce.Management.Domain.Request.Command.User
         public string? MobileNumber { get; set; }
         public DateTime? CreatedOn { get; set; }
 
-        public DateTime? UpdatedOn { get; set; }
-
-
     }
 }

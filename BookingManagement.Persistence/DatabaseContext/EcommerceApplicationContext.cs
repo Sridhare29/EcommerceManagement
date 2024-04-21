@@ -43,6 +43,53 @@ public partial class EcommerceApplicationContext : DbContext
         OnModelCreatingPartial(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(EcommerceApplicationContext).Assembly);
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<Product>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<ProductSku>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Category>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Cart>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<CartItem>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Order>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<OrderItem>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Wishlist>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<Payment>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Address>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
     }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 

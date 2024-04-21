@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.Management.Domain.Models;
 
 public partial class ProductSku
 {
+    [Key]
     public Guid Id { get; set; }
 
     public Guid? ProductId { get; set; }
