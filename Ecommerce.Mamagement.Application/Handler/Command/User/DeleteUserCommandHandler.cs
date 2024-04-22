@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Application.Contracts.Exceptions;
-using Ecommerce.Management.Application.Contracts.Persistance;
+using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;
@@ -13,8 +14,8 @@ namespace Ecommerce.Management.Application.Handler.Command.User
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
     {
-        private readonly IUserRepository _userRepository;
-        public DeleteUserCommandHandler(IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public DeleteUserCommandHandler(IUserQueryRepository userRepository)
         {
             _userRepository = userRepository;
         }

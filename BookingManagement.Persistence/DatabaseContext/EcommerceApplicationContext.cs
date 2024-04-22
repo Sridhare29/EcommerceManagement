@@ -31,10 +31,6 @@ public partial class EcommerceApplicationContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<ProductAttribute> ProductAttributes { get; set; }
-
-    public virtual DbSet<ProductAttributeType> ProductAttributeTypes { get; set; }
-
     public virtual DbSet<ProductSku> ProductSkus { get; set; }
 
 
@@ -47,12 +43,67 @@ public partial class EcommerceApplicationContext : DbContext
         OnModelCreatingPartial(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(EcommerceApplicationContext).Assembly);
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<Product>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<ProductSku>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Category>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Cart>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<CartItem>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Order>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<OrderItem>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Wishlist>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+
+        modelBuilder.Entity<Payment>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Address>()
+           .Property(u => u.Id)
+           .ValueGeneratedOnAdd();
     }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=KANINI-LTP-814\\SQLEXPRESS;Database=EcommerceDb;User Id=sa;Password=@Codesri29;Encrypt=False;TrustServerCertificate=true");
+        }
+    }
 
-   // public override Task(Guid) SaveChangesArgs(CancellationToken cancellationToken = default)
-  //      {
-//return base.SaveChangesAsync(cancellationToken);
-  //  }
+
+    // public override Task(Guid) SaveChangesArgs(CancellationToken cancellationToken = default)
+    //      {
+    //return base.SaveChangesAsync(cancellationToken);
+    //  }
 }

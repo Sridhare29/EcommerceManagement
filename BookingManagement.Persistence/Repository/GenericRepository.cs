@@ -1,4 +1,4 @@
-﻿using Ecommerce.Management.Application.Contracts.Persistance;
+﻿using Ecommerce.Management.Application.Interface;
 using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -40,8 +40,7 @@ namespace BookingManagement.Persistence.Repository
 
         public async Task UpdateAsync(T entity)
         {
-             _ecommerceApplicationContext.Update(entity);
-            _ecommerceApplicationContext.Entry(entity).State = EntityState.Modified;
+            _ecommerceApplicationContext.Update(entity);
             await _ecommerceApplicationContext.SaveChangesAsync();
         }
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Management.Application.Contracts.Persistance
+namespace Ecommerce.Management.Application.Interface
 {
     public interface IGenericRepository<T> where T : class
     {
@@ -18,10 +18,9 @@ namespace Ecommerce.Management.Application.Contracts.Persistance
 
     public interface IProductRepository : IGenericRepository<Product>
     {
+
     }
-    public interface IUserRepository : IGenericRepository<User>
-    {
-    }
+
 
     public interface IcartRepository : IGenericRepository<Cart>
     {

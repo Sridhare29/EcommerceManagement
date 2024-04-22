@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Ecommerce.Management.Application.Handler.Command.User;
 using Ecommerce.Management.Domain.Models;
-using Ecommerce.Management.Domain.Request.Queries.User;
+using Ecommerce.Management.Domain.Request.Command.User;
+using Ecommerce.Management.Domain.Response.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,11 @@ namespace Ecommerce.Management.Application.Mapping
     {
         public UserProfile()
         {
-            CreateMap<UserDto, User>().ReverseMap();
-            CreateMap<User, UserDetailsDto>();
+            CreateMap<GetUserResponseModel, User>().ReverseMap();
+            CreateMap<User, GetUserDetailResponseModel>();
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
+
         }
     }
 }

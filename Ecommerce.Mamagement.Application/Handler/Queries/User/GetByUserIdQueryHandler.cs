@@ -1,21 +1,23 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Application.Contracts.Exceptions;
-using Ecommerce.Management.Application.Contracts.Persistance;
+using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Queries.User;
+using Ecommerce.Management.Domain.Response.User;
 using MediatR;
 
 namespace Ecommerce.Management.Application.Handler.Queries.User
 {
-    public class GetByUserIdQueryHandler : IRequestHandler<GetUserDetailQuery, UserDetailsDto>
+    public class GetByUserIdQueryHandler : IRequestHandler<GetUserDetailRequestModel, GetUserDetailResponseModel>
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        public GetByUserIdQueryHandler(IMapper mapper, IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public GetByUserIdQueryHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<UserDetailsDto> Handle(GetUserDetailQuery request, CancellationToken cancellationToken)
+        public async Task<GetUserDetailResponseModel> Handle(GetUserDetailRequestModel request, CancellationToken cancellationToken)
         {
             var users = await _userRepository.GetByIdAsync(request.Id);
             if (users == null)
@@ -23,7 +25,7 @@ namespace Ecommerce.Management.Application.Handler.Queries.User
                 throw new NotFoundException(nameof(User), request.Id);
             }
 
-            var results = _mapper.Map<UserDetailsDto>(users);
+            var results = _mapper.Map<GetUserDetailResponseModel>(users);
 
             return results;
         }

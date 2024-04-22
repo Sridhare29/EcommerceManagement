@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using Ecommerce.Management.Application.Contracts.Persistance;
+using Ecommerce.Management.Application.Contracts.Exceptions;
+using Ecommerce.Management.Application.Interface;
+using Ecommerce.Management.Application.Interfaces.Queries;
 using Ecommerce.Management.Domain.Request.Command.User;
 using MediatR;
 using System;
@@ -10,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Handler.Command.User
 {
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
+    public class UserPutCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
     {
         private readonly IMapper _mapper;
-        private readonly IUserRepository _userRepository;
-        public UpdateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
+        private readonly IUserQueryRepository _userRepository;
+        public UserPutCommandHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
