@@ -12,15 +12,20 @@ namespace BookingManagement.Persistence.Repository
 {
     public class UserRepository : GenericRepository<User>, IUserQueryRepository
     {
-        protected readonly EcommerceApplicationContext _ecommerceApplicationContext;
         public UserRepository(EcommerceApplicationContext ecommerceApplicationContext) : base(ecommerceApplicationContext)
         {
-            this._ecommerceApplicationContext = ecommerceApplicationContext;
         }
 
-        public async Task<bool> IsUserUnique(string username)
+        public async Task<bool> IsEmailUniqueAsync(string email)
         {
-           return await _ecommerceApplicationContext.Users.AnyAsync(q => q.Username == username) == false;
+            return await _ecommerceApplicationContext.Users.AnyAsync(q => q.Email == email) == false;
         }
+
+        public async Task<bool> IsUsernameUniqueAsync(string username)
+        {
+            return await _ecommerceApplicationContext.Users.AnyAsync(q => q.Username == username) == false;
+        }
+
+
     }
 }

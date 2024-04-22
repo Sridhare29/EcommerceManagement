@@ -10,6 +10,7 @@ namespace Ecommerce.Management.Application.Interfaces.Queries
 {
     public interface IUserQueryRepository : IGenericRepository<User>
     {
-        Task<bool> IsUserUnique(string username);
+        Task<bool> IsUsernameUniqueAsync(string username);
+        Task<bool> IsEmailUniqueAsync(string email);
     }
 }
