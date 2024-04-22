@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Handler.Command.User
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
+    public class UserPostCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
         private readonly IMapper _mapper;
         private readonly IUserQueryRepository _userRepository;
-        public CreateUserCommandHandler(IMapper mapper, IUserQueryRepository userRepository)
+        public UserPostCommandHandler(IMapper mapper, IUserQueryRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;

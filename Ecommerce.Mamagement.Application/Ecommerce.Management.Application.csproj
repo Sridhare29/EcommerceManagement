@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Handler\Command\Products\" />
     <Folder Include="Handler\Queries\Products\" />
-    <Folder Include="Interfaces\Command\" />
     <Folder Include="Vaildators\Query\" />
   </ItemGroup>
 
