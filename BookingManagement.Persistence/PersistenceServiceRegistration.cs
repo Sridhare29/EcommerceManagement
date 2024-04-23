@@ -1,7 +1,4 @@
-﻿using BookingManagement.Persistence.Repository;
-using Ecommerce.Management.Application.Interface;
-using Ecommerce.Management.Application.Interfaces.Queries;
-using Ecommerce.Management.Domain.Models;
+﻿using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +20,9 @@ namespace BookingManagement.Persistence
                 options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
             });
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+/*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserQueryRepository, UserRepository >();
-            return services;
+*/            return services;
         }
     }
 }

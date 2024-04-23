@@ -15,4 +15,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Request\Command\" />
+    <Folder Include="Request\Queries\" />
+    <Folder Include="Response\" />
+  </ItemGroup>
+
 </Project>
