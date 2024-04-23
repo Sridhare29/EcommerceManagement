@@ -1,6 +1,5 @@
 ﻿using Ecommerce.Management.Application.Contracts.Email;
 using Ecommerce.Management.Application.DataModels.Email;
-using Ecommerce.Management.Domain.Models;
 using Ecommerce.Management.Infrastructure.EmailService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
