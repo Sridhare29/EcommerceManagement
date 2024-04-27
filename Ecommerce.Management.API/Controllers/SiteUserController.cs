@@ -47,5 +47,13 @@ namespace Ecommerce.Management.API.Controllers
             return Ok(response);
         }
 
+        [HttpDelete]
+        public async Task<ActionResult<string>> DeleteOrderDetails(Guid Id)
+        {
+            var deleteCommand = new DeleteUserRequestModel() { Id = Id };
+            var response = await this._mediator.Send(deleteCommand);
+            return Ok(response);
+        }
+
     }
 }
