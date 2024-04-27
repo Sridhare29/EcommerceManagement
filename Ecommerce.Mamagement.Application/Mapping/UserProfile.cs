@@ -21,6 +21,8 @@ namespace Ecommerce.Management.Application.Mapping
 
             CreateMap<PostUserRequestModel, SiteUser>();
 
+            CreateMap<UpdateUserRequestModel, SiteUser>();
+
         }
     }
 }

@@ -11,23 +11,22 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Handler.Command.User
 {
-    public class PostSiteUserHandler : IRequestHandler<PostUserRequestModel, Guid>
+    public class UpdateSiteUserHandler : IRequestHandler<UpdateUserRequestModel, Unit>
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
 
-        public PostSiteUserHandler(IMapper mapper, IUserRepository userRepository)
+        public UpdateSiteUserHandler(IMapper mapper, IUserRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<Guid> Handle(PostUserRequestModel request, CancellationToken cancellationToken)
+
+        async Task<Unit> IRequestHandler<UpdateUserRequestModel, Unit>.Handle(UpdateUserRequestModel request, CancellationToken cancellationToken)
         {
-            var user = _mapper.Map<SiteUser>(request);
-           
-             await _userRepository.createUserAsync(user);
-            var response = _mapper.Map<PostUserRequestModel>(request);
-            return user.Id;
+            var entity = this._mapper.Map<SiteUser>(request);
+            await this._userRepository.updateUserAsync( entity);
+            return Unit.Value;
         }
     }
 }

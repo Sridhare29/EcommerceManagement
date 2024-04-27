@@ -61,9 +61,9 @@ namespace BookingManagement.Persistence.Repository
             }
         }
 
-        public async Task updateUserAsync(Guid id, SiteUser user)
+        public async Task updateUserAsync(SiteUser user)
         {
-            var query = "UPDATE site_user SET EmailAddress = @EmailAddress," + " PhoneNumber = @PhoneNumber , Password = @Password ";
+            var query = "UPDATE site_user SET Email_Address = @Email_Address," + " Phone_Number = @Phone_Number , Password = @Password ";
             using (IDbConnection connection = _context.CreateConnection())
             {
                 var users = await connection.ExecuteAsync(query, user);

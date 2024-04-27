@@ -39,5 +39,13 @@ namespace Ecommerce.Management.API.Controllers
             var response = await _mediator.Send(postUserRequestModel);
             return CreatedAtAction(nameof(GetUserById), new { id = response }, postUserRequestModel);
         }
+
+        [HttpPut]
+        public async Task<ActionResult<string>> UpdateOrderDetails([FromBody] UpdateUserRequestModel entity)
+        {
+            var response = await _mediator.Send(entity);
+            return Ok(response);
+        }
+
     }
 }

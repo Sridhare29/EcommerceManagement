@@ -12,7 +12,7 @@ namespace Ecommerce.Management.Application.Interfaces
 
         public Task<SiteUser> createUserAsync(SiteUser user);
 
-        public Task updateUserAsync(Guid id, SiteUser user);
+        public Task updateUserAsync(SiteUser user);
 
         public Task deleteUserAsync(Guid id);
     }
