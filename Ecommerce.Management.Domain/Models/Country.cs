@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Domain.Models
 {
-    public class Country
+    public partial class Country
     {
         public Guid Id { get; set; }
         public string CountryName { get; set; }

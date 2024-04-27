@@ -1,4 +1,6 @@
-﻿using Ecommerce.Management.Domain.Models;
+﻿using BookingManagement.Persistence.Repository;
+using Ecommerce.Management.Application.Interfaces;
+using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,11 +17,13 @@ namespace BookingManagement.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddDbContext<EcommerceApplicationContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
-            });
+            /*  services.AddDbContext<EcommerceApplicationContext>(options =>
+              {
+                  options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
+              });*/
+            services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddSingleton<EcommerceApplicationContext>();
 /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserQueryRepository, UserRepository >();
 */            return services;

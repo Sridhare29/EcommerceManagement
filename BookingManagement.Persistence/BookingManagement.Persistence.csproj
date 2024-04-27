@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Ecommerce.Mamagement.Application\Ecommerce.Management.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
 </Project>
