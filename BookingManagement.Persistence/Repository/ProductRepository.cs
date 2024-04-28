@@ -20,7 +20,7 @@ namespace BookingManagement.Persistence.Repository
         }
         public async Task<Product> createProductAsync(Product product)
         {
-            var query = "INSERT INTO products ( Category_Id, Name, Description, Product_Image) " +
+            var query = "INSERT INTO product ( Category_Id, Name, Description, Product_Image) " +
              "VALUES ( @Category_Id, @Name, @Description, @Product_Image);";
             using (IDbConnection connection = _context.CreateConnection())
             {
@@ -30,9 +30,14 @@ namespace BookingManagement.Persistence.Repository
 
         }
 
-        public Task<Product> GetByIdAsync(Guid id)
+        public async Task<Product> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM product WHERE Id = @Id";
+            using (IDbConnection connection = _context.CreateConnection())
+            {
+                var productsctg = await connection.QueryFirstOrDefaultAsync<Product>(query, new { id });
+                return productsctg;
+            }
         }
 
         public async Task<IEnumerable<Product>> GetProductAsync()

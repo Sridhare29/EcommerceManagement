@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ecommerce.Management.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,7 @@ namespace Ecommerce.Management.Domain.Response.Queries.Product
         public string Name { get; set; }
         public string Description { get; set; }
         public string Product_Image { get; set; }
+        public ProductCategory Category { get; set; }
+
     }
 }

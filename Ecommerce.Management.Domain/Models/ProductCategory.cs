@@ -5,7 +5,7 @@ namespace Ecommerce.Management.Domain.Models
     {
         public Guid Id { get; set; }
         public Guid? ParentCategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string Category_Name { get; set; }
         public ProductCategory ParentCategory { get; set; }
 
     }

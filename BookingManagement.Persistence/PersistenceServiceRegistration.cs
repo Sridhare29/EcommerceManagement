@@ -23,6 +23,7 @@ namespace BookingManagement.Persistence
               });*/
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 
             services.AddSingleton<EcommerceApplicationContext>();
 /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
