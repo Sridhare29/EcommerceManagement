@@ -22,6 +22,7 @@ namespace BookingManagement.Persistence
                   options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
               });*/
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddSingleton<EcommerceApplicationContext>();
 /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

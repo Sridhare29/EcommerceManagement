@@ -25,7 +25,7 @@ namespace Ecommerce.Management.Application.Handler.Command.User
         {
             var user = _mapper.Map<SiteUser>(request);
            
-             await _userRepository.createUserAsync(user);
+            await _userRepository.createUserAsync(user);
             var response = _mapper.Map<PostUserRequestModel>(request);
             return user.Id;
         }
