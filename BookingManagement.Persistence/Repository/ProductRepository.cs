@@ -42,11 +42,11 @@ namespace BookingManagement.Persistence.Repository
 
         public async Task<IEnumerable<Product>> GetProductAsync()
         {
-            var query = "SELECT * FROM product";
+            var query = "[dbo].[GetAllProduct]";
             using (IDbConnection connection = _context.CreateConnection())
             {
-                var users = await connection.QueryAsync<Product>(query);
-                return users.ToList();
+                var result = await connection.QueryAsync<Product>(query, commandType: CommandType.StoredProcedure);
+                return result.ToList();
             }
         }
     }
