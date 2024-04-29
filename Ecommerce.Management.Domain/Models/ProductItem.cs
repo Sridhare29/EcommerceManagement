@@ -3,10 +3,8 @@
     public partial class ProductItem
     {
         public Guid Id { get; set; }
-        public Guid ProductId { get; set; }
-        public string SKU { get; set; }
-        public Guid QtyInStock { get; set; }
-        public string ProductImage { get; set; }
+        public Guid Product_Id { get; set; }
+        public int Qty_In_Stock { get; set; }
         public int Price { get; set; }
         public Product Product { get; set; }
     }

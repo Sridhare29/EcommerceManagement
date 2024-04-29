@@ -1,6 +1,7 @@
 ﻿using BookingManagement.Persistence.Repository;
 using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Domain.Models;
+using EcommerceManagement.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,7 @@ namespace BookingManagement.Persistence
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddScoped<IProductItemRepository, ProductItemRepository>();
 
             services.AddSingleton<EcommerceApplicationContext>();
 /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

@@ -2,10 +2,12 @@
 using Ecommerce.Management.Domain.Models;
 using Ecommerce.Management.Domain.Request.Command.Product;
 using Ecommerce.Management.Domain.Request.Command.ProductCategorys;
+using Ecommerce.Management.Domain.Request.Command.ProductItem;
 using Ecommerce.Management.Domain.Request.Command.User;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response.Queries.Product;
 using Ecommerce.Management.Domain.Response.Queries.ProductCategorys;
+using Ecommerce.Management.Domain.Response.Queries.ProductItem;
 using Ecommerce.Management.Domain.Response.Queries.User;
 using System;
 using System.Collections.Generic;
@@ -42,6 +44,12 @@ namespace Ecommerce.Management.Application.Mapping
             CreateMap<PostProductCategoryRequestModel, ProductCategory>().ReverseMap();
 
             CreateMap<GetProductCategoryResponseModel, ProductCategory>().ReverseMap();
+
+            //productitem
+            CreateMap<ProductItem, GetProductItemByIDResponseModel>().ReverseMap();
+
+            CreateMap<PostProductItemRequestModel, ProductItem>().ReverseMap();
+
 
         }
     }

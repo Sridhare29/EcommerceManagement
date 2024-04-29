@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Management.API.Controllers
 {
-    [Route("V1/")]
+    [Route("v1/ProductCategory")]
     [ApiController]
     public class ProductCategoryController : ControllerBase
     {
