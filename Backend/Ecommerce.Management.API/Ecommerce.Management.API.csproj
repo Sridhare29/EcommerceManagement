@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookingManagement.Persistence\BookingManagement.Persistence.csproj" />
+    <ProjectReference Include="..\BookingManagement.Persistence\EcommerceManagement.Persistence.csproj" />
     <ProjectReference Include="..\Ecommerce.Mamagement.Application\Ecommerce.Management.Application.csproj" />
   </ItemGroup>
 
