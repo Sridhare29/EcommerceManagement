@@ -37,12 +37,12 @@ namespace Ecommerce.Management.Application.Mapping
             CreateMap<PostProductRequestModel, Product>().ReverseMap();
 
             //productcategory
-
-            CreateMap<GetProductCategoryResponseModel, ProductCategory>().ReverseMap();
-
             CreateMap<ProductCategory, GetProductCategoryByIdResponseModel>().ReverseMap();
 
             CreateMap<PostProductCategoryRequestModel, ProductCategory>().ReverseMap();
+
+            CreateMap<GetProductCategoryResponseModel, ProductCategory>().ReverseMap();
+
         }
     }
 }
