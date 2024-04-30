@@ -50,6 +50,8 @@ namespace Ecommerce.Management.Application.Mapping
 
             CreateMap<PostProductItemRequestModel, ProductItem>().ReverseMap();
 
+            CreateMap<GetProductItemResponseModel, ProductItem>().ReverseMap();
+
 
         }
     }

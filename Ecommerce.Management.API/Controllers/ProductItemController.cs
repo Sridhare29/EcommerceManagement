@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Management.Domain.Request.Command.ProductCategorys;
 using Ecommerce.Management.Domain.Request.Command.ProductItem;
+using Ecommerce.Management.Domain.Request.Queries;
 using Ecommerce.Management.Domain.Request.Queries.Product;
 using Ecommerce.Management.Domain.Request.Queries.ProductItem;
 using Ecommerce.Management.Domain.Response.Queries.Product;
@@ -19,7 +20,12 @@ namespace Ecommerce.Management.API.Controllers
         {
             this._mediator = mediator;
         }
-
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GetProductItemResponseModel>>> GetUser()
+        {
+            var response = await _mediator.Send(new GetProductItemRequestModel());
+            return Ok(response);
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<GetProductItemByIDResponseModel>> GetUserById(Guid id)
