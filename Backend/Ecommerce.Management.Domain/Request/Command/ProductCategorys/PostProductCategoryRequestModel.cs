@@ -9,7 +9,7 @@ namespace Ecommerce.Management.Domain.Request.Command.ProductCategorys
 {
     public class PostProductCategoryRequestModel : IRequest<Guid>
     {
-        public string CategoryName { get; set; }
+        public string category_name { get; set; }
 
     }
 }

@@ -19,32 +19,35 @@ namespace BookingManagement.Persistence.Repository
         }
         public async Task<ProductCategory> createProductCategoryAsync(ProductCategory productCategory)
         {
-            var query = "INSERT INTO product_category ( category_name) " +
-             "VALUES ( @category_name);";
-            using (IDbConnection connection = _context.CreateConnection())
+            var query = "[dbo].[InsertProductCategory]";
+            var parameter = new DynamicParameters();
+            parameter.Add("@CategoryName", productCategory.category_name);
+            using (var connection = this._context.CreateConnection())
             {
-                await connection.ExecuteAsync(query, productCategory).ConfigureAwait(false);
-                return productCategory;
+                var output = await connection.ExecuteAsync(query, parameter, commandType: CommandType.StoredProcedure);
             }
+            return productCategory;
         }
 
         public async Task<ProductCategory> GetByIdAsync(Guid id)
         {
-            var query = "SELECT * FROM product_category WHERE Id = @Id";
+            var query = "[dbo].[GetProductCategoryById]";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add("CategoryId", id);
             using (IDbConnection connection = _context.CreateConnection())
             {
-                var productsctg = await connection.QueryFirstOrDefaultAsync<ProductCategory>(query, new { id });
+                var productsctg = await connection.QuerySingleOrDefaultAsync<ProductCategory>(query, dynamicParameters, commandType: CommandType.StoredProcedure);
                 return productsctg;
             }
         }
 
         public async Task<IEnumerable<ProductCategory>> GetProductCategoryAsync()
         {
-            var query = "SELECT * FROM product_category ";
+            var query = "[dbo].[GetAllProductCategories]";
             using (IDbConnection connection = _context.CreateConnection())
             {
-                var productsctg = await connection.QueryAsync<ProductCategory>(query);
-                return productsctg.ToList();
+                var result = await connection.QueryAsync<ProductCategory>(query, commandType: CommandType.StoredProcedure);
+                return result.ToList();
             }
         }
     }

@@ -24,11 +24,19 @@ namespace Ecommerce.Management.Application.Handler.Command.ProductCategorys
 
         public async Task<Guid> Handle(PostProductCategoryRequestModel request, CancellationToken cancellationToken)
         {
-            var productcategory = _mapper.Map<ProductCategory>(request);
+            var productCategory = _mapper.Map<ProductCategory>(request);
 
-            await _productCategoryRepository.createProductCategoryAsync(productcategory);
-            var response = _mapper.Map<PostProductCategoryRequestModel>(request);
-            return productcategory.Id;
+            try
+            {
+                await _productCategoryRepository.createProductCategoryAsync(productCategory);
+                return productCategory.Id;
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception, e.g., log it or throw a custom exception
+                throw new Exception("Error occurred while creating product category.", ex);
+            }
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Ecommerce.Management.Application.Contracts.Exceptions;
 using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -20,22 +21,27 @@ namespace BookingManagement.Persistence.Repository
         }
         public async Task<Product> createProductAsync(Product product)
         {
-            var query = "INSERT INTO product ( Category_Id, Name, Description, Product_Image) " +
-             "VALUES ( @Category_Id, @Name, @Description, @Product_Image);";
-            using (IDbConnection connection = _context.CreateConnection())
+            var query = "[dbo].[InsertProduct]";
+            var parameter = new DynamicParameters();
+            parameter.Add("@Name", product.Name);
+            parameter.Add("@Description", product.Description);
+            parameter.Add("@ProductImage", product.Product_Image);
+            parameter.Add("@CategoryId", product.Category_Id);
+            using (var connection = this._context.CreateConnection())
             {
-                await connection.ExecuteAsync(query, product).ConfigureAwait(false);
-                return product;
+                var output = await connection.ExecuteAsync(query, parameter, commandType: CommandType.StoredProcedure);
             }
-
+            return product;
         }
 
         public async Task<Product> GetByIdAsync(Guid id)
         {
-            var query = "SELECT * FROM product WHERE Id = @Id";
+            var query = "[dbo].[GetProductById]";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add("ProductId", id);
             using (IDbConnection connection = _context.CreateConnection())
             {
-                var productsctg = await connection.QueryFirstOrDefaultAsync<Product>(query, new { id });
+                var productsctg = await connection.QuerySingleOrDefaultAsync<Product>(query, dynamicParameters, commandType: CommandType.StoredProcedure);
                 return productsctg;
             }
         }
