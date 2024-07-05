@@ -21,7 +21,7 @@ namespace BookingManagement.Persistence.Repository
         }
         public async Task<Product> createProductAsync(Product product)
         {
-            var query = "[dbo].[InsertProduct]";
+            var query = "[dbo].[AddProduct]";
             var parameter = new DynamicParameters();
             parameter.Add("@Name", product.Name);
             parameter.Add("@Description", product.Description);

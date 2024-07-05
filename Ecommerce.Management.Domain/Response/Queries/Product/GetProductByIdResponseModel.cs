@@ -13,8 +13,7 @@ namespace Ecommerce.Management.Domain.Response.Queries.Product
         public string Name { get; set; }
         public string Description { get; set; }
         public string Product_Image { get; set; }
-        public Guid Category_Id { get; set; }
-        public ProductCategory Category { get; set; }
+        public string Category_Name { get; set; }
 
     }
 }

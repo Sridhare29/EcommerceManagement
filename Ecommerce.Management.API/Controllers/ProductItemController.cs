@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Management.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     [ApiController]
     public class ProductItemController : ControllerBase
     {
@@ -20,15 +20,16 @@ namespace Ecommerce.Management.API.Controllers
         {
             this._mediator = mediator;
         }
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetProductItemResponseModel>>> GetUser()
+        public async Task<ActionResult<IEnumerable<GetProductItemResponseModel>>> GetProductItem()
         {
             var response = await _mediator.Send(new GetProductItemRequestModel());
             return Ok(response);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetProductItemByIDResponseModel>> GetUserById(Guid id)
+        public async Task<ActionResult<GetProductItemByIDResponseModel>> GetProductItemById(Guid id)
         {
             var response = await _mediator.Send(new GetProductItemByIdRequestModel(id));
             return Ok(response);
@@ -36,10 +37,10 @@ namespace Ecommerce.Management.API.Controllers
 
         [HttpPost]
         [Route("ProductItemPost")]
-        public async Task<ActionResult> PostProductCategory(PostProductItemRequestModel postProductItemRequestModel)
+        public async Task<ActionResult> PostProductItem(PostProductItemRequestModel postProductItemRequestModel)
         {
             var response = await _mediator.Send(postProductItemRequestModel);
-            return CreatedAtAction(nameof(GetUserById), new { id = response }, postProductItemRequestModel);
+            return CreatedAtAction(nameof(GetProductItemById), new { id = response }, postProductItemRequestModel);
         }
     }
 }
