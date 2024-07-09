@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Domain.Models;
+using EcommerceManagement.Persistence.DatabaseContext;
 using System;
 using System.Collections.Generic;
 using System.Data;

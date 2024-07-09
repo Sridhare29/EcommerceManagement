@@ -2,6 +2,7 @@
 using Ecommerce.Management.Application.Contracts.Exceptions;
 using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Domain.Models;
+using EcommerceManagement.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

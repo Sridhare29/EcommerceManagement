@@ -1,6 +1,7 @@
 ﻿using BookingManagement.Persistence.Repository;
 using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Domain.Models;
+using EcommerceManagement.Persistence.DatabaseContext;
 using EcommerceManagement.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,9 +29,11 @@ namespace BookingManagement.Persistence
             services.AddScoped<IProductItemRepository, ProductItemRepository>();
 
             services.AddSingleton<EcommerceApplicationContext>();
-/*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IUserQueryRepository, UserRepository >();
-*/            return services;
+            services.AddSingleton<MinatiAuthApplicationContext>();
+            /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+                        services.AddScoped<IUserQueryRepository, UserRepository >();
+            */
+            return services;
         }
     }
 }

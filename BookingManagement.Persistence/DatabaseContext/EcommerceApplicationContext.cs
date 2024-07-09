@@ -5,7 +5,7 @@ using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Ecommerce.Management.Domain.Models;
+namespace EcommerceManagement.Persistence.DatabaseContext;
 
 public partial class EcommerceApplicationContext : DbContext
 {
@@ -18,6 +18,4 @@ public partial class EcommerceApplicationContext : DbContext
     }
     public IDbConnection CreateConnection()
         => new SqlConnection(_connectionString);
-
-
 }
