@@ -8,7 +8,7 @@ namespace Ecommerce.Management.Domain.Models.Identity
 {
     public class AuthRequest
     {
-        public String Email { get; set; }
-        public String Password { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

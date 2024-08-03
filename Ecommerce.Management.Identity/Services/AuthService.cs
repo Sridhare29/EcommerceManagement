@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Management.Application.Contracts.Exceptions;
 using Ecommerce.Management.Application.Contracts.Identity;
 using Ecommerce.Management.Domain.Models.Identity;
+using Ecommerce.Management.Identity.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,11 +17,11 @@ namespace Ecommerce.Management.Identity.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
 
-        public AuthService(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager, IOptions<JwtSettings> jwtSettings)
+        public AuthService(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -54,7 +55,7 @@ namespace Ecommerce.Management.Identity.Services
             return response;
         }
 
-        private async Task<JwtSecurityToken> GenerateToken(IdentityUser user)
+        private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
@@ -85,9 +86,37 @@ namespace Ecommerce.Management.Identity.Services
             return jwtSecuritytoken;
         }
 
-        public Task<RegistrationResponse> Register(RegistrationRequest registerRequest)
+        public async Task<RegistrationResponse> Register(RegistrationRequest registerRequest)
         {
-            throw new NotImplementedException();
+            var user = new ApplicationUser
+            {
+                Email = registerRequest.Email,
+                FirstName = registerRequest.FirstName,
+                LastName = registerRequest.LastName,
+                UserName = registerRequest.UserName,
+                EmailConfirmed = true
+            };
+
+
+            var result = await _userManager.CreateAsync(user, registerRequest.Password);
+
+
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+                return new RegistrationResponse { UserId = user.Id };
+            }
+
+            else
+            {
+                StringBuilder str = new StringBuilder();
+                foreach (var err in result.Errors)
+                {
+                    str.AppendFormat(".{0}\n", err.Description);
+                }
+
+                throw new BadRequestException($"{str}");
+            }
         }
     }
 }
