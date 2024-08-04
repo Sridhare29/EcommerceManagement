@@ -11,6 +11,6 @@ namespace Ecommerce.Management.Application.Contracts.Identity
     {
         Task<List<UserInfo>> GetUsers();
         
-        Task<UserInfo> GetUserById(Guid id);
+        Task<UserInfo> GetUserById(string userId);
     }
 }

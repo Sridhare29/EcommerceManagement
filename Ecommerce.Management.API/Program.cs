@@ -1,11 +1,17 @@
-using BookingManagement.Persistence;
+using Ecommerce.Management.Persistence;
 using Ecommerce.Management.Application;
+using Ecommerce.Management.Identity;
+
+using Ecommerce.Management.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -28,6 +34,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
