@@ -23,13 +23,13 @@ namespace Ecommerce.Management.Identity
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<EccomerceIdentityDbContext>(options =>
+            services.AddDbContext<EcommerceIdentityDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("EcommerceConnection"));
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<EccomerceIdentityDbContext>()
+                .AddEntityFrameworkStores<EcommerceIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();

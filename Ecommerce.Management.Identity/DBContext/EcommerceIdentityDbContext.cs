@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Identity.DBContext
 {
-    public class EccomerceIdentityDbContext : IdentityDbContext<ApplicationUser>
+    public class EcommerceIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public EccomerceIdentityDbContext(DbContextOptions<EccomerceIdentityDbContext> options) : base(options)
+        public EcommerceIdentityDbContext(DbContextOptions<EcommerceIdentityDbContext> options) : base(options)
         {
             
         }
@@ -19,7 +19,7 @@ namespace Ecommerce.Management.Identity.DBContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(typeof(EccomerceIdentityDbContext).Assembly);
+            builder.ApplyConfigurationsFromAssembly(typeof(EcommerceIdentityDbContext).Assembly);
         }
     }
 }
