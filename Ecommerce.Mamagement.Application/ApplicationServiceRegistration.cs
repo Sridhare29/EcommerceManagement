@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Ecommerce.Management.Application.Interfaces;
 using Ecommerce.Management.Application.Mapping;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ namespace Ecommerce.Management.Application
             services.AddSingleton(mapper);
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
 
             return services;
         }

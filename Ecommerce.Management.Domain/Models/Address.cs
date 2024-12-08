@@ -13,8 +13,6 @@ namespace Ecommerce.Management.Domain.Models
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public Guid CountryId { get; set; }
-
-        [Write(false)]
         public Country Country { get; set; }
     }
 }
