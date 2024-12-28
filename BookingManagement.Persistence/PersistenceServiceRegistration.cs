@@ -27,6 +27,7 @@ namespace Ecommerce.Management.Persistence
             services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddScoped<IProductItemRepository, ProductItemRepository>();
             services.AddScoped<IPickupRequest, PickupRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
 
             services.AddSingleton<EcommerceApplicationContext>();
 /*            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

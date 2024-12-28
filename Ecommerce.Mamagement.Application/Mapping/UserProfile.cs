@@ -5,8 +5,10 @@ using Ecommerce.Management.Domain.Request.Command.Product;
 using Ecommerce.Management.Domain.Request.Command.ProductCategorys;
 using Ecommerce.Management.Domain.Request.Command.ProductItem;
 using Ecommerce.Management.Domain.Request.Command.User;
+using Ecommerce.Management.Domain.Request.Queries.Address;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response;
+using Ecommerce.Management.Domain.Response.Queries.Address;
 using Ecommerce.Management.Domain.Response.Queries.Product;
 using Ecommerce.Management.Domain.Response.Queries.ProductCategorys;
 using Ecommerce.Management.Domain.Response.Queries.ProductItem;
@@ -55,6 +57,11 @@ namespace Ecommerce.Management.Application.Mapping
             CreateMap<GetProductItemResponseModel, ProductItem>().ReverseMap();
 
             CreateMap<PickupRequest, Pickup>().ReverseMap();
+
+            //Address
+
+            CreateMap<GetAddressResponseModel, Address>().ReverseMap();
+
 
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ecommerce.Management.Domain.Request.Queries.Product
 {
     public class GetProductByIdRequestModel : IRequest<GetProductByIDResponseModel>
-    {
+    {   
         public GetProductByIdRequestModel(Guid id)
         {
             this.Id = id;

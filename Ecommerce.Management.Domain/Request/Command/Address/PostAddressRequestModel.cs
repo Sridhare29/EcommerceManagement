@@ -1,10 +1,13 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Ecommerce.Management.Domain.Models
+namespace Ecommerce.Management.Domain.Request.Command.Address
 {
-    public partial class Address
+    public class PostAddressRequestModel
     {
-        public Guid Id { get; set; }
         public string UnitNumber { get; set; }
         public string StreetNumber { get; set; }
         public string AddressLine1 { get; set; }
@@ -13,5 +16,6 @@ namespace Ecommerce.Management.Domain.Models
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
+
     }
 }

@@ -31,7 +31,7 @@ namespace EcommerceManagement.Persistence.Repository
             parameters.Add("@PickupDate", pickupRequest?.PickupDate);
             parameters.Add("@Message", pickupRequest?.Message);
             parameters.Add("@Status", pickupRequest?.Status);
-            parameters.Add("@UpdatedAt", DateTime.UtcNow); // Ensure this matches the stored procedure
+            parameters.Add("@UpdatedAt", DateTime.UtcNow);
             parameters.Add("@CreatedAt", DateTime.UtcNow);
 
 

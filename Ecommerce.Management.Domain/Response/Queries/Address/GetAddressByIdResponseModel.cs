@@ -1,8 +1,12 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Ecommerce.Management.Domain.Models
+namespace Ecommerce.Management.Domain.Response.Queries.Address
 {
-    public partial class Address
+    public class GetAddressByIdResponseModel
     {
         public Guid Id { get; set; }
         public string UnitNumber { get; set; }
