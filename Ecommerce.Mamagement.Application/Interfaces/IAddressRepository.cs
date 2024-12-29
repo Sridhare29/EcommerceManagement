@@ -11,6 +11,6 @@ namespace Ecommerce.Management.Application.Interfaces
     {
         public Task<IEnumerable<Address>> GetAddressCategoryAsync();
         public Task<Address> GetByIdAsync(Guid id);
-        public Task<Address> createAddress(Address address);
+        public Task<Address> CreateAddress(Address address);
     }
 }

@@ -52,5 +52,29 @@ namespace EcommerceManagement.Persistence.Repository
                 return userAddress;
             }
         }
+
+        public async Task<Address> CreateAddress(Address address)
+        {
+            var query = "[dbo].[InsertAddressDetails]";
+            var parameters = new DynamicParameters();
+
+            // Adding parameters for the stored procedure
+            parameters.Add("@unit_number", address.UnitNumber);
+            parameters.Add("@street_number", address.StreetNumber);
+            parameters.Add("@address_line1", address.AddressLine1);
+            parameters.Add("@address_line2", address.AddressLine2);
+            parameters.Add("@city", address.City);
+            parameters.Add("@region", address.Region);
+            parameters.Add("@postal_code", address.PostalCode);
+            parameters.Add("@country", address.Country);
+
+            using (var connection = this._context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return address; // Returning the inserted address object
+        }
+
     }
 }

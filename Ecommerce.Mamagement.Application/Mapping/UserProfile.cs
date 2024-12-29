@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.Management.Domain.Models;
+using Ecommerce.Management.Domain.Request.Command.Address;
 using Ecommerce.Management.Domain.Request.Command.Pickup;
 using Ecommerce.Management.Domain.Request.Command.Product;
 using Ecommerce.Management.Domain.Request.Command.ProductCategorys;
@@ -62,6 +63,7 @@ namespace Ecommerce.Management.Application.Mapping
 
             CreateMap<GetAddressResponseModel, Address>().ReverseMap();
             CreateMap<Address, GetAddressByIdResponseModel>().ReverseMap();
+            CreateMap<PostAddressRequestModel, Address>().ReverseMap();
 
 
         }

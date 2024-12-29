@@ -1,4 +1,6 @@
-﻿using Ecommerce.Management.Domain.Request.Queries.Address;
+﻿using Ecommerce.Management.Domain.Request.Command.Address;
+using Ecommerce.Management.Domain.Request.Command.Product;
+using Ecommerce.Management.Domain.Request.Queries.Address;
 using Ecommerce.Management.Domain.Request.Queries.Product;
 using Ecommerce.Management.Domain.Request.Queries.ProductCategorys;
 using Ecommerce.Management.Domain.Response.Queries.Address;
@@ -30,6 +32,13 @@ namespace Ecommerce.Management.API.Controllers
         {
             var response = await _mediator.Send(new GetAddressByIdRequestModel(id));
             return Ok(response);
+        }
+        [HttpPost]
+        [Route("AddressPost")]
+        public async Task<ActionResult> PostUser(PostAddressRequestModel postAddressRequestModel)
+        {
+            var response = await _mediator.Send(postAddressRequestModel);
+            return CreatedAtAction(nameof(GetUserById), new { id = response }, postAddressRequestModel);
         }
     }
 }
