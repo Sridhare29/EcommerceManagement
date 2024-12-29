@@ -33,9 +33,24 @@ namespace EcommerceManagement.Persistence.Repository
             }
         }
 
-        public Task<Address> GetByIdAsync(Guid id)
+        public async Task<Address> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var query = "[dbo].[GetAddressDetailsByID]";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            // Correct parameter name to match the stored procedure
+            dynamicParameters.Add("@addressID", id);
+
+            using (IDbConnection connection = _context.CreateConnection())
+            {
+                var userAddress = await connection.QuerySingleOrDefaultAsync<Address>(
+                    query,
+                    dynamicParameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return userAddress;
+            }
         }
     }
 }

@@ -61,6 +61,7 @@ namespace Ecommerce.Management.Application.Mapping
             //Address
 
             CreateMap<GetAddressResponseModel, Address>().ReverseMap();
+            CreateMap<Address, GetAddressByIdResponseModel>().ReverseMap();
 
 
         }
