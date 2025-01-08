@@ -11,6 +11,7 @@ namespace Ecommerce.Management.Application.Interfaces
 {
     public interface IPickupRequest
     {
+        public Task<Pickup> GetByIdAsync(Guid id);
         public Task<Pickup> CreatePickupRequest(Pickup pickupRequest);
     }
 }

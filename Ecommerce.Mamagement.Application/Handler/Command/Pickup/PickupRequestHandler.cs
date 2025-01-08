@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Handler.Command.Pickup
 {
-    public class PickupRequestHandler : IRequestHandler<PickupRequest, Guid>
+    public class PickupRequestHandler : IRequestHandler<PostPickupRequestModel, Guid>
     {
         private readonly IMapper _mapper;
         private readonly IPickupRequest _pickupRequestRepository;
@@ -24,12 +24,13 @@ namespace Ecommerce.Management.Application.Handler.Command.Pickup
             _pickupRequestRepository = pickupRequestRepository;
         }
 
-        public async Task<Guid> Handle(PickupRequest request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(PostPickupRequestModel request, CancellationToken cancellationToken)
         {
             // Map PostProductRequestModel to PickupRequest (domain request model)
             var pickupRequest =  _mapper.Map<Domain.Models.Pickup>(request);
+
             await _pickupRequestRepository.CreatePickupRequest(pickupRequest);
-            var response = _mapper.Map<PickupRequest>(request);
+            var response = _mapper.Map<PostPickupRequestModel>(request);
 
             return pickupRequest.Id;
         }

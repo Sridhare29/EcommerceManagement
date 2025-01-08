@@ -15,7 +15,5 @@ namespace Ecommerce.Management.Domain.Models
         public string Status { get; set; }
         public DateTime? PickupDate { get; set; }
         public Guid AddressId { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime CreatedAt { get; set; }
     }
 }

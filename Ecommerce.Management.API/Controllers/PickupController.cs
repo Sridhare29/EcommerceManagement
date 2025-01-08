@@ -1,12 +1,17 @@
 ﻿using Ecommerce.Management.Application.Interfaces;
+using Ecommerce.Management.Domain.Request.Command.Address;
 using Ecommerce.Management.Domain.Request.Command.Pickup;
+using Ecommerce.Management.Domain.Request.Queries.Address;
+using Ecommerce.Management.Domain.Request.Queries.Pickup;
+using Ecommerce.Management.Domain.Response.Queries.Address;
+using Ecommerce.Management.Domain.Response.Queries.Pickup;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Management.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/pickup")]
     [ApiController]
     public class PickupController : ControllerBase
     {
@@ -19,18 +24,19 @@ namespace Ecommerce.Management.API.Controllers
             this._mediator = mediator;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreatePickupRequest([FromBody] PickupRequest pickupRequest)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetPickupByIdResponseModel>> GetUserById(Guid id)
         {
-            if (pickupRequest == null)
-            {
-                return BadRequest("Invalid pickup request data.");
-            }
-            // Call the handler through MediatR to process the request and get a response
-            var response = await _mediator.Send(pickupRequest);
-
-            // Return a successful response with the pickup request details
+            var response = await _mediator.Send(new GetPickupByIdRequestModel(id));
             return Ok(response);
+        }
+
+        [HttpPost("request")]
+        public async Task<IActionResult> CreatePickupRequest([FromBody] PostPickupRequestModel postPickupRequestModel)
+        {
+            var response = await _mediator.Send(postPickupRequestModel);
+            return CreatedAtAction(nameof(GetUserById), new { id = response }, postPickupRequestModel);
+
         }
 
     }

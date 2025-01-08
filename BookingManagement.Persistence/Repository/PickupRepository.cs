@@ -17,31 +17,45 @@ namespace EcommerceManagement.Persistence.Repository
 
         public async Task<Pickup> CreatePickupRequest(Pickup pickupRequest)
         {
-            if (pickupRequest == null)
-            {
-                return null;
-            }
-
             var query = "[dbo].[AddPickupRequest]";
             var parameters = new DynamicParameters();
 
-            parameters.Add("@AddressId", pickupRequest?.AddressId);
-            parameters.Add("@ExpectedWeight", pickupRequest?.ExpectedWeight);
-            parameters.Add("@PickupSlot", pickupRequest?.PickupSlot);
-            parameters.Add("@PickupDate", pickupRequest?.PickupDate);
-            parameters.Add("@Message", pickupRequest?.Message);
-            parameters.Add("@Status", pickupRequest?.Status);
-            parameters.Add("@UpdatedAt", DateTime.UtcNow);
-            parameters.Add("@CreatedAt", DateTime.UtcNow);
+            // Adding parameters to match the stored procedure
+
+            parameters.Add("@AddressId", pickupRequest.AddressId);
+            parameters.Add("@ExpectedWeight", pickupRequest.ExpectedWeight);
+            parameters.Add("@PickupDate", pickupRequest.PickupDate);
+            parameters.Add("@Message", pickupRequest.Message);
+            parameters.Add("@PickupSlot", pickupRequest.PickupSlot);
+            parameters.Add("@Status", pickupRequest.Status);
 
 
             using (var connection = this._context.CreateConnection())
             {
-                var response = await connection.ExecuteAsync(query, parameters, commandType: CommandType.StoredProcedure);
+                await connection.ExecuteAsync(query, parameters, commandType: CommandType.StoredProcedure);
             }
 
             return pickupRequest;
         }
 
+        public async Task<Pickup> GetByIdAsync(Guid id)
+        {
+            var query = "[dbo].[GetPickupRequestById]";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            // Correct parameter name to match the stored procedure
+            dynamicParameters.Add("@ID", id);
+
+            using (IDbConnection connection = _context.CreateConnection())
+            {
+                var pickupById = await connection.QuerySingleOrDefaultAsync<Pickup>(
+                    query,
+                    dynamicParameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return pickupById;
+            }
+        }
     }
 }

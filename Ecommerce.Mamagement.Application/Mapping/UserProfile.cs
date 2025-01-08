@@ -10,6 +10,7 @@ using Ecommerce.Management.Domain.Request.Queries.Address;
 using Ecommerce.Management.Domain.Request.Queries.User;
 using Ecommerce.Management.Domain.Response;
 using Ecommerce.Management.Domain.Response.Queries.Address;
+using Ecommerce.Management.Domain.Response.Queries.Pickup;
 using Ecommerce.Management.Domain.Response.Queries.Product;
 using Ecommerce.Management.Domain.Response.Queries.ProductCategorys;
 using Ecommerce.Management.Domain.Response.Queries.ProductItem;
@@ -57,7 +58,10 @@ namespace Ecommerce.Management.Application.Mapping
 
             CreateMap<GetProductItemResponseModel, ProductItem>().ReverseMap();
 
-            CreateMap<PickupRequest, Pickup>().ReverseMap();
+            //Pickup
+
+            CreateMap<PostPickupRequestModel, Pickup>().ReverseMap();
+            CreateMap<Pickup, GetPickupByIdResponseModel>().ReverseMap();
 
             //Address
 
