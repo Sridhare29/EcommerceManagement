@@ -15,17 +15,22 @@ namespace Ecommerce.Management.API.Controllers
     [ApiController]
     public class PickupController : ControllerBase
     {
-        private readonly IPickupRequest _pickupRequest;
+        private readonly IPickupRepository _pickupRequest;
         public readonly IMediator _mediator;
 
-        public PickupController(IPickupRequest pickupRequest, IMediator mediator)
+        public PickupController(IPickupRepository pickupRequest, IMediator mediator)
         {
             _pickupRequest = pickupRequest;
             this._mediator = mediator;
         }
-
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GetPickupResponseModel>>> GetPickUpDetails()
+        {
+            var response = await _mediator.Send(new GetPickupRequestModel());
+            return Ok(response);
+        }
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetPickupByIdResponseModel>> GetUserById(Guid id)
+        public async Task<ActionResult<GetPickupByIdResponseModel>> GetPickupById(Guid id)
         {
             var response = await _mediator.Send(new GetPickupByIdRequestModel(id));
             return Ok(response);
@@ -35,7 +40,7 @@ namespace Ecommerce.Management.API.Controllers
         public async Task<IActionResult> CreatePickupRequest([FromBody] PostPickupRequestModel postPickupRequestModel)
         {
             var response = await _mediator.Send(postPickupRequestModel);
-            return CreatedAtAction(nameof(GetUserById), new { id = response }, postPickupRequestModel);
+            return CreatedAtAction(nameof(GetPickupById), new { id = response }, postPickupRequestModel);
 
         }
 

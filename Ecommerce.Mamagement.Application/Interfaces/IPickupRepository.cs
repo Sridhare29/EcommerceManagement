@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Management.Application.Interfaces
 {
-    public interface IPickupRequest
+    public interface IPickupRepository
     {
+        public Task<IEnumerable<Pickup>> GetPickupAsync();
         public Task<Pickup> GetByIdAsync(Guid id);
         public Task<Pickup> CreatePickupRequest(Pickup pickupRequest);
     }

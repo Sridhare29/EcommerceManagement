@@ -16,21 +16,33 @@ namespace Ecommerce.Management.Application.Handler.Command.Pickup
     public class PickupRequestHandler : IRequestHandler<PostPickupRequestModel, Guid>
     {
         private readonly IMapper _mapper;
-        private readonly IPickupRequest _pickupRequestRepository;
+        private readonly IPickupRepository _pickupRequestRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public PickupRequestHandler(IMapper mapper, IPickupRequest pickupRequestRepository)
+        public PickupRequestHandler(
+            IMapper mapper,
+            IPickupRepository pickupRequestRepository,
+            IAddressRepository addressRepository) 
         {
             _mapper = mapper;
             _pickupRequestRepository = pickupRequestRepository;
+            _addressRepository = addressRepository;
         }
 
         public async Task<Guid> Handle(PostPickupRequestModel request, CancellationToken cancellationToken)
         {
-            // Map PostProductRequestModel to PickupRequest (domain request model)
-            var pickupRequest =  _mapper.Map<Domain.Models.Pickup>(request);
+            var pickupRequest = _mapper.Map<Domain.Models.Pickup>(request);
+
+            var address = await _addressRepository.GetAddressCategoryAsync();
+
+            if (address == null)
+            {
+                throw new Exception("No address found for the current user.");
+            }
+
+            pickupRequest.AddressId = address.FirstOrDefault().Id;
 
             await _pickupRequestRepository.CreatePickupRequest(pickupRequest);
-            var response = _mapper.Map<PostPickupRequestModel>(request);
 
             return pickupRequest.Id;
         }

@@ -59,7 +59,7 @@ namespace Ecommerce.Management.Application.Mapping
             CreateMap<GetProductItemResponseModel, ProductItem>().ReverseMap();
 
             //Pickup
-
+            CreateMap<GetPickupResponseModel, Pickup>().ReverseMap();
             CreateMap<PostPickupRequestModel, Pickup>().ReverseMap();
             CreateMap<Pickup, GetPickupByIdResponseModel>().ReverseMap();
 

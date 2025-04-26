@@ -22,13 +22,13 @@ namespace Ecommerce.Management.API.Controllers
             this._mediator = mediator;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetAddressResponseModel>>> GetProductCategory()
+        public async Task<ActionResult<IEnumerable<GetAddressResponseModel>>> GetAddressDetails()
         {
             var response = await _mediator.Send(new GetAddressRequestModel());
             return Ok(response);
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetAddressByIdResponseModel>> GetUserById(Guid id)
+        public async Task<ActionResult<GetAddressByIdResponseModel>> GetAddressById(Guid id)
         {
             var response = await _mediator.Send(new GetAddressByIdRequestModel(id));
             return Ok(response);
@@ -38,7 +38,7 @@ namespace Ecommerce.Management.API.Controllers
         public async Task<ActionResult> PostUser(PostAddressRequestModel postAddressRequestModel)
         {
             var response = await _mediator.Send(postAddressRequestModel);
-            return CreatedAtAction(nameof(GetUserById), new { id = response }, postAddressRequestModel);
+            return CreatedAtAction(nameof(GetAddressById), new { id = response }, postAddressRequestModel);
         }
     }
 }

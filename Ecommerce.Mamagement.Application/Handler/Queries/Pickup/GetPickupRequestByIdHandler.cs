@@ -15,10 +15,10 @@ namespace Ecommerce.Management.Application.Handler.Queries.Pickup
 {
     public class GetPickupRequestByIdHandler : IRequestHandler<GetPickupByIdRequestModel, GetPickupByIdResponseModel>
     {
-        public readonly IPickupRequest _pickupRequest;
+        public readonly IPickupRepository _pickupRequest;
         public readonly IMapper _mapper;
 
-        public GetPickupRequestByIdHandler(IPickupRequest pickupRequest, IMapper mapper)
+        public GetPickupRequestByIdHandler(IPickupRepository pickupRequest, IMapper mapper)
         {
             _mapper = mapper;
             _pickupRequest = pickupRequest;

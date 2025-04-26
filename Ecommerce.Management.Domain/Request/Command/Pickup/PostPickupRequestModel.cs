@@ -14,6 +14,6 @@ namespace Ecommerce.Management.Domain.Request.Command.Pickup
         public string Message { get; set; }
         public string Status { get; set; }
         public DateTime PickupDate { get; set; }
-        public Guid AddressId { get; set; }
-    }
+/*        public Guid AddressId { get; set; }
+*/    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceManagement.Persistence.Repository
 {
-    public class PickupRepository : IPickupRequest
+    public class PickupRepository : IPickupRepository
     {
         private readonly EcommerceApplicationContext _context;
 
@@ -19,6 +19,7 @@ namespace EcommerceManagement.Persistence.Repository
         {
             var query = "[dbo].[AddPickupRequest]";
             var parameters = new DynamicParameters();
+            pickupRequest.Status ??= "Pending";
 
             // Adding parameters to match the stored procedure
 
@@ -55,6 +56,16 @@ namespace EcommerceManagement.Persistence.Repository
                 );
 
                 return pickupById;
+            }
+        }
+
+        public async Task<IEnumerable<Pickup>> GetPickupAsync()
+        {
+            var query = "[dbo].[GetTopPickupRequests]";
+            using (IDbConnection connection = _context.CreateConnection())
+            {
+                var result = await connection.QueryAsync<Pickup>(query, commandType: CommandType.StoredProcedure);
+                return result.ToList();
             }
         }
     }
